@@ -86,6 +86,12 @@ else
     cabbrev termina Term
     cabbrev terminal Term
 
+    " match braces, quotes
+    inoremap { {}<Esc>i
+    inoremap ( ()<Esc>i
+    inoremap " ""<Esc>i
+    inoremap ' ''<Esc>i
+
     " COC Stuff
 
     " Use tab for trigger completion with characters ahead and navigate.
