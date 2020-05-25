@@ -1,4 +1,4 @@
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -7,112 +7,114 @@ Plug 'preservim/nerdcommenter'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'morhetz/gruvbox'
 Plug 'vimlab/split-term.vim'
+Plug 'lervag/vimtex'
 call plug#end()
 
-if exists('g:vscode')
-    " VSCode extension
-else
-    " ordinary neovim
-    syntax on
-    filetype plugin indent on
+" ordinary neovim
+syntax on
+filetype plugin indent on
 
-    " enable mouse
-    set mouse=a
+" enable mouse
+set mouse=a
 
-    "let g:livepreview_previewer = 'open -a Preview'
+"let g:livepreview_previewer = 'open -a Preview'
 
-    "colorscheme efficient
-    "let g:airline_theme='lucius'
+"colorscheme efficient
+"let g:airline_theme='lucius'
 
-    colorscheme gruvbox
-    "colorscheme monokai
-    "let g:airline_theme='lucius'
-    set termguicolors
+""colorscheme gruvbox
+colorscheme monokai
+let g:airline_theme='ayu_dark'
+set termguicolors
 
-    "set transparency=30
-    " setting dark theme for gruvbox in vim terminal
-     set background=dark    " setting dark mode
+"set transparency=30
+" setting dark theme for gruvbox in vim terminal
+ set background=dark    " setting dark mode
 
-     " change background
-     highlight Normal ctermbg=NONE guibg=NONE
+ " change background
+ highlight Normal ctermbg=NONE guibg=NONE
 
-     " change line number
-     highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
-    "let g:java_highlight_functions = 1
-    "let g:airline_powerline_fonts = 1
+ " change line number
+ highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+"let g:java_highlight_functions = 1
+"let g:airline_powerline_fonts = 1
 
-    "detect LaTeX properly initially
-    autocmd BufRead,BufNewFile *.tex set filetype=tex
+"detect LaTeX properly initially
+autocmd BufRead,BufNewFile *.tex set filetype=tex
 
-    "remove trailing whitespace
-    autocmd BufWritePre * %s/\s\+$//e
+"remove trailing whitespace
+autocmd BufWritePre * %s/\s\+$//e
 
-    set autoindent
+set autoindent
 
-    set number
+set number
 
-    set incsearch
+set incsearch
 
-    map <up> <nop>
-    map <down> <nop>
-    map <left> <nop>
-    map <right> <nop>
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
 
-    " java map
-    autocmd FileType java map sout<Tab> iSystem.out.println("");<Esc>F"i
+set guifont=Menlo\ Regular:h18
 
-    set guifont=Menlo\ Regular:h18
+filetype plugin indent on
+" show existing tab with 4 spaces width
+set tabstop=4
+" when indenting with '>', use 4 spaces width
+set shiftwidth=4
+" On pressing tab, insert 4 spaces
+set expandtab
 
-    filetype plugin indent on
-    " show existing tab with 4 spaces width
-    set tabstop=4
-    " when indenting with '>', use 4 spaces width
-    set shiftwidth=4
-    " On pressing tab, insert 4 spaces
-    set expandtab
+" copying to system clipboard
+vnoremap <C-c> "+y
 
-    " copying to system clipboard
-    vnoremap <C-c> "+y
+" commenting with cmd /
+vmap ++ <plug>NERDCommenterToggle
+nmap ++ <plug>NERDCommenterToggle
 
-    " commenting with cmd /
-    vmap ++ <plug>NERDCommenterToggle
-    nmap ++ <plug>NERDCommenterToggle
+" open integrated terminal the right way (Vim8 style)
+cabbrev ter Term
+cabbrev term Term
+cabbrev termi Term
+cabbrev termin Term
+cabbrev termina Term
+cabbrev terminal Term
 
-    " open integrated terminal the right way (Vim8 style)
-    cabbrev ter Term
-    cabbrev term Term
-    cabbrev termi Term
-    cabbrev termin Term
-    cabbrev termina Term
-    cabbrev terminal Term
+" match braces, quotes
+autocmd FileType java,c,python inoremap { {}<Esc>i
+autocmd FileType java,c,python inoremap ( ()<Esc>i
+autocmd FileType java,c,python inoremap [ []<Esc>i
+autocmd FileType java,c,python inoremap " ""<Esc>i
+autocmd FileType java,c,python inoremap ' ''<Esc>i
 
-    " match braces, quotes
-    inoremap { {}<Esc>i
-    inoremap ( ()<Esc>i
-    inoremap " ""<Esc>i
-    inoremap ' ''<Esc>i
+" java map
+autocmd FileType java inoremap sout System.out.println("");<Esc>F"i
 
-    " COC Stuff
+" remap window navigation
+map <C-k> <C-w>k
+map <C-j> <C-w>j
+map <C-h> <C-w>h
+map <C-l> <C-w>l
 
-    " Use tab for trigger completion with characters ahead and navigate.
-    " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-    " other plugin before putting this into your config.
-    inoremap <silent><expr> <TAB>
-          \ pumvisible() ? "\<C-n>" :
-          \ <SID>check_back_space() ? "\<TAB>" :
-          \ coc#refresh()
-    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" COC Stuff
 
-    " Use K to show documentation in preview window.
-    nnoremap <silent> K :call <SID>show_documentation()<CR>
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-    function! s:show_documentation()
-      if (index(['vim','help'], &filetype) >= 0)
-        execute 'h '.expand('<cword>')
-      else
-        call CocAction('doHover')
-      endif
-    endfunction
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
 
-endif
-
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
