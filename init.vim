@@ -28,14 +28,14 @@ let g:airline_theme='ayu_dark'
 set termguicolors
 
 "set transparency=30
-" setting dark theme for gruvbox in vim terminal
- set background=dark    " setting dark mode
+"setting dark theme for gruvbox in vim terminal
+set background=dark    " setting dark mode
 
- " change background
- highlight Normal ctermbg=NONE guibg=NONE
+" change background
+highlight Normal ctermbg=NONE guibg=NONE
 
- " change line number
- highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+" change line number
+highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 "let g:java_highlight_functions = 1
 "let g:airline_powerline_fonts = 1
 
@@ -73,6 +73,9 @@ vnoremap <C-c> "+y
 vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
 
+" save with cmd s
+map __ <Esc>:w<Enter>
+
 " open integrated terminal the right way (Vim8 style)
 cabbrev ter Term
 cabbrev term Term
@@ -82,14 +85,14 @@ cabbrev termina Term
 cabbrev terminal Term
 
 " match braces, quotes
-autocmd FileType java,c,python inoremap { {}<Esc>i
-autocmd FileType java,c,python inoremap ( ()<Esc>i
-autocmd FileType java,c,python inoremap [ []<Esc>i
-autocmd FileType java,c,python inoremap " ""<Esc>i
-autocmd FileType java,c,python inoremap ' ''<Esc>i
+autocmd FileType java,c,python,javascript inoremap { {}<Esc>i
+autocmd FileType java,c,python,javascript inoremap ( ()<Esc>i
+autocmd FileType java,c,python,javascript inoremap [ []<Esc>i
+autocmd FileType java,c,python,javascript inoremap " ""<Esc>i
+autocmd FileType java,c,python,javascript inoremap ' ''<Esc>i
 
 " java map
-autocmd FileType java inoremap sout System.out.println("");<Esc>F"i
+autocmd FileType java inoremap sout System.out.println();<Esc>F)i
 
 " remap window navigation
 map <C-k> <C-w>k
