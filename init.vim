@@ -70,11 +70,14 @@ set expandtab
 vnoremap <C-c> "+y
 
 " commenting with cmd /
-vmap ++ <plug>NERDCommenterToggle
-nmap ++ <plug>NERDCommenterToggle
+imap ~cmd/ <Esc><plug>NERDCommenterToggle
+nmap ~cmd/ <plug>NERDCommenterToggle
+vmap ~cmd/ <plug>NERDCommenterToggle
 
 " save with cmd s
-map __ <Esc>:w<Enter>
+imap ~cmd+s <Esc>:w<Enter>
+nmap ~cmd+s <Esc>:w<Enter>
+vmap ~cmd+s <Esc>:w<Enter>
 
 " open integrated terminal the right way (Vim8 style)
 cabbrev ter Term
