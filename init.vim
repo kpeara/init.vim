@@ -25,6 +25,7 @@ set mouse=a
 ""colorscheme gruvbox
 colorscheme monokai
 let g:airline_theme='ayu_dark'
+let g:airline_powerline_fonts = 1
 set termguicolors
 
 "set transparency=30
@@ -37,7 +38,6 @@ highlight Normal ctermbg=NONE guibg=NONE
 " change line number
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 "let g:java_highlight_functions = 1
-"let g:airline_powerline_fonts = 1
 
 "detect LaTeX properly initially
 autocmd BufRead,BufNewFile *.tex set filetype=tex
