@@ -5,30 +5,21 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'crusoexia/vim-monokai'
 Plug 'preservim/nerdcommenter'
 Plug 'jelera/vim-javascript-syntax'
-Plug 'morhetz/gruvbox'
 Plug 'vimlab/split-term.vim'
 Plug 'lervag/vimtex'
 call plug#end()
 
-" ordinary neovim
 syntax on
 filetype plugin indent on
 
 " enable mouse
 set mouse=a
 
-"let g:livepreview_previewer = 'open -a Preview'
-
-"colorscheme efficient
-"let g:airline_theme='lucius'
-
-""colorscheme gruvbox
 colorscheme monokai
 let g:airline_theme='ayu_dark'
 let g:airline_powerline_fonts = 1
 set termguicolors
 
-"set transparency=30
 "setting dark theme for gruvbox in vim terminal
 set background=dark    " setting dark mode
 
@@ -94,6 +85,14 @@ autocmd FileType java,c,python,javascript inoremap [ []<Esc>i
 autocmd FileType java,c,python,javascript inoremap " ""<Esc>i
 autocmd FileType java,c,python,javascript inoremap ' ''<Esc>i
 
+autocmd FileType java,c,python,javascript inoremap {<Enter> {<Enter>}<Esc>O
+
+" for empty string/params
+autocmd FileType java,c,python,javascript inoremap () ()
+autocmd FileType java,c,python,javascript inoremap [] []
+autocmd FileType java,c,python,javascript inoremap "" ""
+autocmd FileType java,c,python,javascript inoremap '' ''
+
 " java map
 autocmd FileType java inoremap sout System.out.println();<Esc>F)i
 
@@ -108,11 +107,12 @@ map <C-l> <C-w>l
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+"inoremap <silent><expr> <TAB>
+      "\ pumvisible() ? "\<C-n>" :
+      "\ <SID>check_back_space() ? "\<TAB>" :
+      "\ coc#refresh()
+"inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
