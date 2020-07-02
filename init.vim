@@ -5,7 +5,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'crusoexia/vim-monokai'
 Plug 'preservim/nerdcommenter'
 Plug 'jelera/vim-javascript-syntax'
-Plug 'vimlab/split-term.vim'
+"Plug 'vimlab/split-term.vim'
 Plug 'lervag/vimtex'
 call plug#end()
 
@@ -70,28 +70,24 @@ imap ~cmd+s <Esc>:w<Enter>
 nmap ~cmd+s <Esc>:w<Enter>
 vmap ~cmd+s <Esc>:w<Enter>
 
-" open integrated terminal the right way (Vim8 style)
-cabbrev ter Term
-cabbrev term Term
-cabbrev termi Term
-cabbrev termin Term
-cabbrev termina Term
-cabbrev terminal Term
+" open integrated terminal in split
+cabbrev term vs<Enter><C-l>:terminal
+cabbrev terminal vs<Enter><C-l>:terminal
 
 " match braces, quotes
-autocmd FileType java,c,python,javascript inoremap { {}<Esc>i
-autocmd FileType java,c,python,javascript inoremap ( ()<Esc>i
-autocmd FileType java,c,python,javascript inoremap [ []<Esc>i
-autocmd FileType java,c,python,javascript inoremap " ""<Esc>i
-autocmd FileType java,c,python,javascript inoremap ' ''<Esc>i
+"autocmd FileType java,c,python,javascript inoremap { {}<Esc>i
+"autocmd FileType java,c,python,javascript inoremap ( ()<Esc>i
+"autocmd FileType java,c,python,javascript inoremap [ []<Esc>i
+"autocmd FileType java,c,python,javascript inoremap " ""<Esc>i
+"autocmd FileType java,c,python,javascript inoremap ' ''<Esc>i
 
-autocmd FileType java,c,python,javascript inoremap {<Enter> {<Enter>}<Esc>O
+inoremap {<Enter> {<Enter>}<Esc>O
 
 " for empty string/params
-autocmd FileType java,c,python,javascript inoremap () ()
-autocmd FileType java,c,python,javascript inoremap [] []
-autocmd FileType java,c,python,javascript inoremap "" ""
-autocmd FileType java,c,python,javascript inoremap '' ''
+"autocmd FileType java,c,python,javascript inoremap () ()
+"autocmd FileType java,c,python,javascript inoremap [] []
+"autocmd FileType java,c,python,javascript inoremap "" ""
+"autocmd FileType java,c,python,javascript inoremap '' ''
 
 " java map
 autocmd FileType java inoremap sout System.out.println();<Esc>F)i
@@ -101,6 +97,9 @@ map <C-k> <C-w>k
 map <C-j> <C-w>j
 map <C-h> <C-w>h
 map <C-l> <C-w>l
+
+" FZF Stuff
+set rtp+=/usr/local/opt/fzf
 
 " COC Stuff
 
