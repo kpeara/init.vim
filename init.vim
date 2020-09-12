@@ -2,10 +2,10 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'crusoexia/vim-monokai'
+"Plug 'crusoexia/vim-monokai'
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'preservim/nerdcommenter'
 Plug 'jelera/vim-javascript-syntax'
-"Plug 'vimlab/split-term.vim'
 Plug 'lervag/vimtex'
 call plug#end()
 
@@ -15,10 +15,13 @@ filetype plugin indent on
 " enable mouse
 set mouse=a
 
-colorscheme monokai
+colorscheme dracula
 let g:airline_theme='ayu_dark'
 let g:airline_powerline_fonts = 1
 set termguicolors
+
+" use vim keys in nvim terminal
+tnoremap <Esc> <C-\><C-n>
 
 "setting dark theme for gruvbox in vim terminal
 set background=dark    " setting dark mode
@@ -71,8 +74,14 @@ nmap ~cmd+s <Esc>:w<Enter>
 vmap ~cmd+s <Esc>:w<Enter>
 
 " open integrated terminal in split
-cabbrev term vs<Enter><C-l>:terminal
-cabbrev terminal vs<Enter><C-l>:terminal
+cabbrev te vs<Enter><C-l>:terminal<Esc>iclear
+cabbrev ter vs<Enter><C-l>:terminal<Esc>iclear
+cabbrev term vs<Enter><C-l>:terminal<Esc>iclear
+cabbrev termi vs<Enter><C-l>:terminal<Esc>iclear
+cabbrev termin vs<Enter><C-l>:terminal<Esc>iclear
+cabbrev termina vs<Enter><C-l>:terminal<Esc>iclear
+cabbrev terminal vs<Enter><C-l>:terminal<Esc>iclear
+cabbrev Sterm split<Enter><C-l>:terminal<Esc>iclear
 
 " match braces, quotes
 "autocmd FileType java,c,python,javascript inoremap { {}<Esc>i
@@ -91,12 +100,14 @@ inoremap {<Enter> {<Enter>}<Esc>O
 
 " java map
 autocmd FileType java inoremap sout System.out.println();<Esc>F)i
+autocmd FileType java inoremap main public static void main(String[] args) {<Enter>}<Esc>O
+
 
 " remap window navigation
-map <C-k> <C-w>k
-map <C-j> <C-w>j
-map <C-h> <C-w>h
-map <C-l> <C-w>l
+"map <C-k> <C-w>k
+"map <C-j> <C-w>j
+"map <C-h> <C-w>h
+"map <C-l> <C-w>l
 
 " FZF Stuff
 set rtp+=/usr/local/opt/fzf
