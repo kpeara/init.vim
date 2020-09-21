@@ -3,6 +3,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'crusoexia/vim-monokai'
+"Plug 'morhetz/gruvbox'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'preservim/nerdcommenter'
 Plug 'jelera/vim-javascript-syntax'
@@ -16,7 +17,8 @@ filetype plugin indent on
 set mouse=a
 
 colorscheme dracula
-let g:airline_theme='ayu_dark'
+"colorscheme gruvbox
+"let g:airline_theme='ayu_dark' " general powerline theme
 let g:airline_powerline_fonts = 1
 set termguicolors
 
@@ -24,7 +26,7 @@ set termguicolors
 tnoremap <Esc> <C-\><C-n>
 
 "setting dark theme for gruvbox in vim terminal
-set background=dark    " setting dark mode
+"set background=dark    " setting dark mode
 
 " change background
 highlight Normal ctermbg=NONE guibg=NONE
@@ -74,14 +76,16 @@ nmap ~cmd+s <Esc>:w<Enter>
 vmap ~cmd+s <Esc>:w<Enter>
 
 " open integrated terminal in split
-cabbrev te vs<Enter><C-l>:terminal<Esc>iclear
-cabbrev ter vs<Enter><C-l>:terminal<Esc>iclear
-cabbrev term vs<Enter><C-l>:terminal<Esc>iclear
-cabbrev termi vs<Enter><C-l>:terminal<Esc>iclear
-cabbrev termin vs<Enter><C-l>:terminal<Esc>iclear
-cabbrev termina vs<Enter><C-l>:terminal<Esc>iclear
-cabbrev terminal vs<Enter><C-l>:terminal<Esc>iclear
-cabbrev Sterm split<Enter><C-l>:terminal<Esc>iclear
+cabbrev te split<Enter><C-l>:terminal<Esc>iclear
+cabbrev ter split<Enter><C-l>:terminal<Esc>iclear
+cabbrev term split<Enter><C-l>:terminal<Esc>iclear
+cabbrev termi split<Enter><C-l>:terminal<Esc>iclear
+cabbrev termin split<Enter><C-l>:terminal<Esc>iclear
+cabbrev termina split<Enter><C-l>:terminal<Esc>iclear
+cabbrev terminal split<Enter><C-l>:terminal<Esc>iclear
+cabbrev vterm vs<Enter><C-l>:terminal<Esc>iclear
+cabbrev Vterm vs<Enter><C-l>:terminal<Esc>iclear
+cabbrev VTerm vs<Enter><C-l>:terminal<Esc>iclear
 
 " match braces, quotes
 "autocmd FileType java,c,python,javascript inoremap { {}<Esc>i
@@ -99,8 +103,8 @@ inoremap {<Enter> {<Enter>}<Esc>O
 "autocmd FileType java,c,python,javascript inoremap '' ''
 
 " java map
-autocmd FileType java inoremap sout System.out.println();<Esc>F)i
-autocmd FileType java inoremap main public static void main(String[] args) {<Enter>}<Esc>O
+autocmd FileType java inoremap sout<Enter> System.out.println();<Esc>F)i
+autocmd FileType java inoremap main<Enter> public static void main(String[] args) {<Enter>}<Esc>O
 
 
 " remap window navigation
