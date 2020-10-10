@@ -3,8 +3,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'crusoexia/vim-monokai'
-"Plug 'morhetz/gruvbox'
+"Plug 'NLKNguyen/papercolor-theme'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'morhetz/gruvbox'
+Plug 'lifepillar/vim-solarized8'
 Plug 'preservim/nerdcommenter'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'lervag/vimtex'
@@ -16,7 +18,8 @@ filetype plugin indent on
 " enable mouse
 set mouse=a
 
-colorscheme dracula
+colorscheme solarized8
+"colorscheme dracula
 "colorscheme gruvbox
 "let g:airline_theme='ayu_dark' " general powerline theme
 let g:airline_powerline_fonts = 1
@@ -25,11 +28,12 @@ set termguicolors
 " use vim keys in nvim terminal
 tnoremap <Esc> <C-\><C-n>
 
-"setting dark theme for gruvbox in vim terminal
-"set background=dark    " setting dark mode
+"setting theme color for gruvbox && paperColor
+set background=light " setting dark mode
+"set background=dark
 
-" change background
-highlight Normal ctermbg=NONE guibg=NONE
+" make background transparent (use terminal background)
+"highlight Normal ctermbg=NONE guibg=NONE
 
 " change line number
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
@@ -94,7 +98,7 @@ cabbrev VTerm vs<Enter><C-l>:terminal<Esc>iclear
 "autocmd FileType java,c,python,javascript inoremap " ""<Esc>i
 "autocmd FileType java,c,python,javascript inoremap ' ''<Esc>i
 
-inoremap {<Enter> {<Enter>}<Esc>O
+autocmd FileType java,c,javascript inoremap {<Enter> {<Enter>}<Esc>O
 
 " for empty string/params
 "autocmd FileType java,c,python,javascript inoremap () ()
