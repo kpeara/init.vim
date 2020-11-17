@@ -6,10 +6,13 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "Plug 'NLKNguyen/papercolor-theme'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'morhetz/gruvbox'
-Plug 'lifepillar/vim-solarized8'
+"Plug 'lifepillar/vim-solarized8'
 Plug 'preservim/nerdcommenter'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'lervag/vimtex'
+Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 syntax on
@@ -18,8 +21,9 @@ filetype plugin indent on
 " enable mouse
 set mouse=a
 
-colorscheme solarized8
-"colorscheme dracula
+"let g:material_theme_style = 'ocean'
+"colorscheme material
+colorscheme dracula
 "colorscheme gruvbox
 "let g:airline_theme='ayu_dark' " general powerline theme
 let g:airline_powerline_fonts = 1
@@ -28,12 +32,22 @@ set termguicolors
 " use vim keys in nvim terminal
 tnoremap <Esc> <C-\><C-n>
 
+" fzf mappings
+nnoremap <C-p> :Files<cr>
+nnoremap <C-b> :Buffers<cr>
+
+" to close buffer with esc
+if has("nvim")
+  au TermOpen * tnoremap <Esc> <c-\><c-n>
+  au FileType fzf tunmap <Esc>
+endif
+
 "setting theme color for gruvbox && paperColor
-set background=light " setting dark mode
+"set background=light " setting dark mode
 "set background=dark
 
 " make background transparent (use terminal background)
-"highlight Normal ctermbg=NONE guibg=NONE
+highlight Normal ctermbg=NONE guibg=NONE
 
 " change line number
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
