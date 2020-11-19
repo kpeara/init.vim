@@ -13,6 +13,7 @@ Plug 'lervag/vimtex'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim'
 call plug#end()
 
 syntax on
@@ -21,11 +22,12 @@ filetype plugin indent on
 " enable mouse
 set mouse=a
 
-"let g:material_theme_style = 'ocean'
-"colorscheme material
-colorscheme dracula
+let g:material_theme_style = 'ocean'
+colorscheme material
+"colorscheme dracula
 "colorscheme gruvbox
 "let g:airline_theme='ayu_dark' " general powerline theme
+"let g:airline_theme='molokai' " general powerline theme
 let g:airline_powerline_fonts = 1
 set termguicolors
 
@@ -35,6 +37,10 @@ tnoremap <Esc> <C-\><C-n>
 " fzf mappings
 nnoremap <C-p> :Files<cr>
 nnoremap <C-b> :Buffers<cr>
+
+" goyo
+let g:goyo_height=100
+autocmd! User GoyoLeave silent! source $HOME/.config/nvim/init.vim
 
 " to close buffer with esc
 if has("nvim")
